@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, DetailView
+from django.views.generic.detail import TemplateResponseMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
 
 from django.urls import reverse_lazy
+from django.http import HttpResponse
 from .forms import UserCreationModelForm
-from .models import User
+from .models import User, Category
 
 
 class UserCreationView(CreateView):
@@ -27,3 +30,9 @@ def secret_page(request):
 class CabinetView(LoginRequiredMixin, DetailView):
     def get_object(self):
         return self.request.user
+
+class SingleObjectTemplateResponseMixin(TemplateResponseMixin):
+    template_name_field = None
+    template_name_suffix = '_detail'
+
+
