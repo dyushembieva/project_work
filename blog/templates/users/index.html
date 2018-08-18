@@ -1,0 +1,11 @@
+{% extends 'shared/base.html' %}
+{% block title %}Index page{% endblock %}
+{%block content%}
+<div>
+    {% if user.is_authenticated %}
+        <p>Добро пожаловать, {{ user.username }}. Спасибо что вошли.</p>
+    {% else %}
+        <p>Добро пожаловать, новый пользователь. Пожалуйста войдите.</p>
+    {% endif %}
+</div>
+{% endblock %}
