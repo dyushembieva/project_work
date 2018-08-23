@@ -18,9 +18,9 @@ class Category(models.Model):
         return 'Категория %s' % self.name
 
 class Fruit(models.Model):
-    name = models.CharField(max_length=255, verbose_name='Название товара')
+    name = models.CharField(max_length=255, blank=True, null = True, verbose_name='Название товара')
     price = models.IntegerField(default=0, verbose_name='Цена')
-    # image = models.CharField(max_length=255, verbose_name='Ссылка на картинку')
+    image = models.CharField(max_length=255, verbose_name='Ссылка на картинку')
     
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserCreationView, IndexView, CabinetView, secret_page
+from .views import UserCreationView, IndexView, CabinetView, secret_page,FruitViews
 
 
 app_name = 'blog'
@@ -9,4 +9,5 @@ urlpatterns = [
     path('cabinet/', CabinetView.as_view(), name='cabinet'),
     path('secret-page/', secret_page, name='secret_page'),
     path('', IndexView.as_view(), name='index'),
+    path('fruit/', FruitViews.as_view(), name='fruit'),
 ]

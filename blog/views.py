@@ -8,7 +8,7 @@ from django.template.loader import render_to_string
 
 from django.urls import reverse_lazy
 from django.http import HttpResponse
-from .forms import UserCreationModelForm
+from .forms import UserCreationModelForm,FruitModelForm
 from .models import User, Category
 
 
@@ -16,6 +16,11 @@ class UserCreationView(CreateView):
     form_class = UserCreationModelForm
     success_url = reverse_lazy('login')
     template_name = 'users/user_form.html'
+    
+class FruitViews(CreateView):
+    form_class= FruitModelForm
+    success_url = reverse_lazy('index')
+    template_name = 'category/fruit.html'
 
 
 class IndexView(TemplateView):
