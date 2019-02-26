@@ -8,39 +8,19 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-class Category(models.Model):
-    name = models.CharField(max_length=255, verbose_name='Название категории')
 
-    class Meta:
-        verbose_name = "Категория"
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
 
     def __str__(self):
-        return 'Категория %s' % self.name
+        return self.name
+
 
 class Fruit(models.Model):
-    name = models.CharField(max_length=255, blank=True, null = True, verbose_name='Название товара')
-    price = models.IntegerField(default=0, verbose_name='Цена')
-    image = models.CharField(max_length=255, verbose_name='Ссылка на картинку')
-    
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = "Фрукт"
-        verbose_name_plural = "Фрукты"
+    name = models.CharField(max_length=255)
+    price = models.IntegerField(default=0)
+    fruit = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return 'Фрукт %s' % self.name
-
-class Vegetable(models.Model):
-    name = models.CharField(max_length=255, verbose_name='Название товара')
-    price = models.IntegerField(default=0, verbose_name='Цена')
-    # image = models.CharField(max_length=255, verbose_name='Ссылка на картинку')
-    
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = "Овощь"
-        verbose_name_plural = "Овощи"
-
-    def __str__(self):
-        return 'Овощь %s' % self.name
+        return self.name

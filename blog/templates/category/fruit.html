@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-        <h2>Регистрация</h2>
+{% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+        <h2>Регистрация товара</h2>
         <form method="post" action="{% url "blog:fruit" %}">
               {% csrf_token %}
               {{ form.as_p }}
               <button type="submit">Регистрация</button>
         </form>
-    
-</body>
-</html>
+
+<div class="category_style">{% for i in category %}</div>
+      <ul><li>{{ i }}</li></ul>
+{% endfor %}
+{% endblock %}
+

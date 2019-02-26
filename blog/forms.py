@@ -10,7 +10,9 @@ class UserCreationModelForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'name', 'email', 'password1', 'password2']
+
+
 class FruitModelForm(forms.ModelForm):
     class Meta:
         model = Fruit
-        fields = ['name', 'price']
+        fields = ('name', 'price')
